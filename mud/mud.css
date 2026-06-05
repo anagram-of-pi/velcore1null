@@ -86,8 +86,27 @@ header #stats {
 
 /* Username in top right corner */
 header #user {
-    max-width: 20%;
+    width: 20%;
+    height: 100%;
     padding: 0 2rem;
+    
+    display: flex;
+    flex-direction: row;
+    justify-content: right;
+    align-items: center;
+    gap: 1rem;
+}
+
+button#fullscreen {
+    flex: 0 0 auto;
+    height: 40%;
+    aspect-ratio: 1 / 1;
+
+    background-image: url("../assets/icons/fullscreen.svg");
+}
+
+html:fullscreen button#fullscreen {
+    background-image: url("../assets/icons/fullscreen_exit.svg");
 }
 
 /* Uppercase the header text (but specifically not the title or username) */
@@ -150,6 +169,21 @@ header #stats p {
     background-position: 0;
     background-size: contain;
 }
+
+button {
+    aspect-ratio: 1 / 1;
+
+    background-image: url("../assets/icons/add.svg");
+    background-color: transparent;
+    background-position: 0;
+    background-size: contain;
+
+    border: none;
+}
+
+button:hover  { filter: brightness(75%); }
+button:active { filter: brightness(50%); }
+
 
 main {
     width: 100%;
@@ -291,18 +325,14 @@ main {
 #message-panel #send-button {
     flex: 0 0 auto;
     height: 100%;
-    aspect-ratio: 1 / 1;
 
     background-image: url("../assets/icons/send.svg");
-    background-color: transparent;
-    background-position: 0;
-    background-size: contain;
 
-    border: none;
+    transform: scale(0.8);
 }
-
 #message-panel #send-button:hover { filter: brightness(75%); }
 #message-panel #send-button:active { filter: brightness(50%); }
+
 /* Remove the blue box that appears when focused */
 :focus-visible {
     outline: 1px solid var(--accent-light);

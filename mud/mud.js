@@ -7,3 +7,25 @@ TODO:
 [ ] Send data about changes and messages back to API
 */
 
+
+// ---------------------- Fullscreen ----------------------
+const documentEl = document.documentElement;
+
+function openFullscreen() {
+  
+    // Check if document can be fullscreened before requesting it
+    documentEl.requestFullscreen();
+    console.log("Requested fullscreen");
+}
+
+const fullscreenButtonEl = document.getElementById("fullscreen");
+
+fullscreenButtonEl.onclick = () => {
+    if (!document.fullscreenElement) {
+        openFullscreen();
+    }
+    else {
+        // Exit fullscreen if the method exists
+        document.exitFullscreen?.();
+    }
+};
