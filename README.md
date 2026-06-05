@@ -30,6 +30,10 @@ I hold my code almost to professional standards. I follow conventions to make my
 
 That also means that my code is really easy to help contribute to! Help is always welcome. 
 
+The game has two components, those being the blog page and the secret backdoor page. For both, I designed the page in google slides. This is similar to wireframing but, in my opinion, easier to create, and a better visualization. It allows me to pin down exactly how I want the page to look without having to edit code and debug CSS. 
+After I design the page, I create the skeleton of it using just HTML, without any CSS. This is a new technique I've been trying for this project. I just look at my reference slides, decide what needs a container and how to modularize it, and just write. It's actually (maybe surprisingly) worked really well! It lets me just focus on getting it done without being sidetracked to change some settings in the styling. 
+Finally, I style the page with CSS working from top to bottom, all in a new, empty .css file. I don't have much to say about this last step, it's basically just finishing up the fun stuff after everything else has been structured. It does definitely help not having to context-switch between the style and structure constantly. And that's it! As a static webpage, it's done!
+
 
 
 <!-- TODO: Update if this changes!! -->
