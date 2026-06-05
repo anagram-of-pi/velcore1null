@@ -1,3 +1,4 @@
+/* Import JetBrsin font for use in document */
 @font-face {
     font-display: swap;
     font-family: "JetBrains";
@@ -13,12 +14,14 @@
     src: url("assets/fonts/JetBrainsMono-bold.woff2") format("woff2");
 }
 
+/* Reset all styles */
 body, html, * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
 }
 
+/* Define variables for consistent and customizable colors and fonts */
 html {
     --bg-dark: hsl(0, 0%, 0%);
     --bg-normal: hsl(0, 0%, 7%);
@@ -35,9 +38,11 @@ html {
     --font-normal: "JetBrains", monospace;
     --font-title: "JetBrains", monospace;
 
+    /* Set page background color so that the overscroll shows this instead of something else */
     background: var(--bg-normal);
 }
 
+/* Set background and defaults for text */
 body {
     background-color: var(--bg-normal);
 
@@ -49,6 +54,7 @@ body {
 
 
 /* ---------------------- Header ---------------------- */
+/* Top bar should be a row of centered items */
 header {
     width: 100%;
     height: 10vh;
@@ -59,6 +65,7 @@ header {
     flex-direction: row;
 }
 
+/* Create the MUD V0.8.7 title text */
 header h1#header {
     max-width: 20%;
 
@@ -67,6 +74,7 @@ header h1#header {
     color: var(--accent-light);
 }
 
+/* Center the items in the fake stats bar */
 header #stats {
     width: 60%;
 
@@ -76,24 +84,26 @@ header #stats {
     flex-direction: row;
 }
 
+/* Username in top right corner */
 header #user {
     max-width: 20%;
     padding: 0 2rem;
 }
 
-header h1#header, header #stats p {
+/* Uppercase the header text (but specifically not the title or username) */
+header #stats p {
     text-transform: uppercase;
 }
 
 
 
 /* ---------------------- Panels and Pages ---------------------- */
+/* Create the panel outline */
 .panel {
-    /* padding: 1rem; */
-
     border: 1px solid var(--accent-light);
 }
 
+/* Seperate the panel name from the content with a border and padding */
 .panel h2 {
     width: 100%;
 
@@ -293,6 +303,11 @@ main {
 
 #message-panel #send-button:hover { filter: brightness(75%); }
 #message-panel #send-button:active { filter: brightness(50%); }
+/* Remove the blue box that appears when focused */
+:focus-visible {
+    outline: 1px solid var(--accent-light);
+    box-shadow: none;
+}
 
 #users-panel .pages-selector {
     display: flex;
