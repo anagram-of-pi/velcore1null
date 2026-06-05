@@ -51,5 +51,84 @@ body {
 /* ---------------------- Header ---------------------- */
 header {
     width: 100%;
+    height: 10vh;
+
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-direction: row;
+}
+
+header h1#header {
+    max-width: 20%;
+    color: var(--accent-light);
+
+    background-color: aqua;
+}
+
+header #stats {
+    width: 60%;
+
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    flex-direction: row;
+
+    background-color: blue;
+}
+
+header #user {
+    max-width: 20%;
+    padding: 0 2rem;
+
+    background-color: brown;
+}
+
+header h1#header, header #stats p {
+    text-transform: uppercase;
+}
+
+
+
+/* ---------------------- Panels and Pages ---------------------- */
+.panel {
+    /* padding: 1rem; */
+
+    border: 1px solid var(--accent-light);
+}
+
+.panel h2 {
+    width: 100%;
+
+    padding: 1rem;
+    padding-bottom: 0.5rem;
+
+    font-size: 1rem;
+    color: var(--text-dim);
+
+    border-bottom: 1px solid var(--accent-light);
+}
+
+.panel .pages-selector {
+    width: 100%;
+
+    padding: 0.5rem 1rem;
+}
+
+.pages-selector .page {
+    width: 100%;
+
+    padding: 0.2rem;
     
+    background-color: var(--bg-normal);
+    border-radius: 7px;
+}
+
+.pages-selector .page:hover {
+    background-color: var(--accent-dark);
+}
+
+.page .page-icon {
+    /* height: 100%; */
+
 }
