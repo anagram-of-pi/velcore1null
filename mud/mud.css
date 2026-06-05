@@ -1,0 +1,55 @@
+@font-face {
+    font-display: swap;
+    font-family: "JetBrains";
+    font-style: normal;
+    font-weight: 400;
+    src: url("assets/fonts/JetBrainsMono-regular.woff2") format("woff2");
+}
+@font-face {
+    font-display: swap;
+    font-family: "JetBrains";
+    font-style: normal;
+    font-weight: 700;
+    src: url("assets/fonts/JetBrainsMono-bold.woff2") format("woff2");
+}
+
+body, html, * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    --bg-dark: hsl(0, 0%, 0%);
+    --bg-normal: hsl(0, 0%, 7%);
+    --bg-light: hsl(0, 0%, 14%);
+
+    --text-dim: hsl(0, 0%, 60%);
+    --text-normal: hsl(0, 0%, 80%);
+    --text-bright: hsl(0, 0%, 100%);
+
+    --accent-dark: hsl(128, 100%, 9%);
+    --accent-normal: hsl(128, 100%, 18%);
+    --accent-light: hsl(128, 73%, 27%);
+
+    --font-normal: "JetBrains", monospace;
+    --font-title: "JetBrains", monospace;
+
+    background: var(--bg-normal);
+}
+
+body {
+    background-color: var(--bg-normal);
+
+    color: var(--text-normal);
+
+    font-family: var(--font-normal);
+}
+
+
+
+/* ---------------------- Header ---------------------- */
+header {
+    width: 100%;
+    
+}

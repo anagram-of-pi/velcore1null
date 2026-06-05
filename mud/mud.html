@@ -2,6 +2,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="mud.css">
     <title>MUD v0.8.7</title>
 </head>
 <body>
@@ -21,9 +22,8 @@
     </header>
 
     <main>
-        <div class="panel">
+        <div class="panel" id="nav-panel">
             <h2>Navigation</h2>
-
             <div class="pages-selector">
                 <div class="page">
                     <div class="page-icon"></div>
@@ -43,9 +43,8 @@
             </div>
         </div>
 
-        <div class="panel">
+        <div class="panel" id="pages-panel">
             <h2>Pages</h2>
-
             <div class="pages-selector">
                 <div class="page">
                     <div class="page-icon"></div>
@@ -62,7 +61,84 @@
                     <p class="page-name">timeline</p>
                     <p class="page-number"></p>
                 </div>
+                <div class="page" id="new-page">
+                    <div class="page-icon"></div>
+                    <p class="page-name">new page</p>
+                    <p class="page-number"></p>
+                </div>
             </div>
+        </div>
+        
+        <div class="panel" id="dm-panel">
+            <h2>Direct Messages</h2>
+            <div class="pages-selector">
+                <div class="page">
+                    <div class="page-icon"></div>
+                    <p class="page-name">username01</p>
+                    <p class="page-number"></p>
+                </div>
+                <div class="page">
+                    <div class="page-icon"></div>
+                    <p class="page-name">username02</p>
+                    <p class="page-number"></p>
+                </div>
+                <div class="page">
+                    <div class="page-icon"></div>
+                    <p class="page-name">velcore1null</p>
+                    <p class="page-number"></p>
+                </div>
+            </div>
+        </div>
+        
+        <div class="panel" id="storage-panel">
+            <h2>Storage</h2>
+            <div id="storage-bar"></div>
+            <p>3.2GB/10GB</p>
+        </div>
+        
+        <div class="panel" id="content-panel">
+            <div id="content-header">
+                <p>Page: start_here</p>
+            </div>
+            <div id="content"></div>
+            <div id="content-footer">
+                <p>Created: 2023-11-07 22:14:03</p>
+                <p>Author: velcore1null</p>
+                <p>Version: 1 (locked)</p>
+            </div>
+        </div>
+
+        <div class="panel" id="message-panel">
+            <input type="text" name="message-box" placeholder="Type a message to the channel...">
+        </div>
+
+        <div class="panel" id="users-panel">
+            <h2>Online - 13</h2>
+            <div class="pages-selector">
+                <div class="page">
+                    <div class="page-icon"></div>
+                    <p class="page-name">username01</p>
+                    <p class="user-last-seen">Last seen: 3 weeks ago</p>
+                </div>
+                <div class="page">
+                    <div class="page-icon"></div>
+                    <p class="page-name">username02</p>
+                    <p class="user-last-seen">Last seen: 6 weeks ago</p>
+                </div>
+                <div class="page">
+                    <div class="page-icon"></div>
+                    <p class="page-name">username03</p>
+                    <p class="user-last-seen">Last seen: 2 months ago</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="panel" id="system-panel">
+            <p>Archive Activity: High</p>
+            <p>Anomalies Detected: 7</p>
+            <p>Pages Altered: 23</p>
+            <p>Pages Removed: 9</p>
+            <p>Last Event: 2m 14s ago </p>
         </div>
     </main>
 </body>
