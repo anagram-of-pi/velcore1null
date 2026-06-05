@@ -4,6 +4,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="mud.css">
     <title>MUD v0.8.7</title>
+    <link rel="shortcut icon" href="../assets/images/mud_favicon.ico" type="image/x-icon">
 </head>
 <body>
     <header>
@@ -69,7 +70,7 @@
             </div>
         </div>
         
-        <div class="panel" id="dm-panel">
+        <div class="panel" id="dms-panel">
             <h2>Direct Messages</h2>
             <div class="pages-selector">
                 <div class="page">
@@ -91,7 +92,9 @@
         </div>
         
         <div class="panel" id="storage-panel">
-            <h2>Storage</h2>
+            <div class="h2-container">
+                <h2>Storage</h2>
+            </div>
             <div id="storage-bar"></div>
             <p>3.2GB/10GB</p>
         </div>
@@ -110,25 +113,32 @@
 
         <div class="panel" id="message-panel">
             <input type="text" name="message-box" placeholder="Type a message to the channel...">
+            <button id="send-button"></button>
         </div>
 
         <div class="panel" id="users-panel">
             <h2>Online - 13</h2>
             <div class="pages-selector">
                 <div class="page">
-                    <div class="page-icon"></div>
-                    <p class="page-name">username01</p>
+                    <div class="user">
+                        <div class="page-icon"></div>
+                        <p>username01</p>
+                    </div>
                     <p class="user-last-seen">Last seen: 3 weeks ago</p>
                 </div>
                 <div class="page">
-                    <div class="page-icon"></div>
-                    <p class="page-name">username02</p>
-                    <p class="user-last-seen">Last seen: 6 weeks ago</p>
+                    <div class="user">
+                        <div class="page-icon"></div>
+                        <p>username02</p>
+                    </div>
+                    <p class="user-last-seen">Last seen: 3 weeks ago</p>
                 </div>
                 <div class="page">
-                    <div class="page-icon"></div>
-                    <p class="page-name">username03</p>
-                    <p class="user-last-seen">Last seen: 2 months ago</p>
+                    <div class="user">
+                        <div class="page-icon"></div>
+                        <p>velcore1null</p>
+                    </div>
+                    <p class="user-last-seen">Last seen: 3 weeks ago</p>
                 </div>
             </div>
         </div>
@@ -141,5 +151,7 @@
             <p>Last Event: 2m 14s ago </p>
         </div>
     </main>
+
+    <div id="crt-scan-lines"></div>
 </body>
 </html>

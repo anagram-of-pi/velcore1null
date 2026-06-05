@@ -24,9 +24,9 @@ html {
     --bg-normal: hsl(0, 0%, 7%);
     --bg-light: hsl(0, 0%, 14%);
 
-    --text-dim: hsl(0, 0%, 60%);
-    --text-normal: hsl(0, 0%, 80%);
-    --text-bright: hsl(0, 0%, 100%);
+    --text-dim: hsl(0, 0%, 40%);
+    --text-normal: hsl(0, 0%, 60%);
+    --text-bright: hsl(0, 0%, 80%);
 
     --accent-dark: hsl(128, 100%, 9%);
     --accent-normal: hsl(128, 100%, 18%);
@@ -61,9 +61,10 @@ header {
 
 header h1#header {
     max-width: 20%;
-    color: var(--accent-light);
 
-    background-color: aqua;
+    padding-left: 2rem;
+
+    color: var(--accent-light);
 }
 
 header #stats {
@@ -73,15 +74,11 @@ header #stats {
     justify-content: space-around;
     align-items: center;
     flex-direction: row;
-
-    background-color: blue;
 }
 
 header #user {
     max-width: 20%;
     padding: 0 2rem;
-
-    background-color: brown;
 }
 
 header h1#header, header #stats p {
@@ -105,6 +102,7 @@ header h1#header, header #stats p {
 
     font-size: 1rem;
     color: var(--text-dim);
+    text-transform: uppercase;
 
     border-bottom: 1px solid var(--accent-light);
 }
@@ -117,11 +115,16 @@ header h1#header, header #stats p {
 
 .pages-selector .page {
     width: 100%;
-
+    
     padding: 0.2rem;
     
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+
     background-color: var(--bg-normal);
     border-radius: 7px;
+    cursor: pointer;
 }
 
 .pages-selector .page:hover {
@@ -129,6 +132,210 @@ header h1#header, header #stats p {
 }
 
 .page .page-icon {
-    /* height: 100%; */
+    flex: 0 0 auto;
+    width: 1lh;
+    aspect-ratio: 1 / 1;
 
+    background-image: url("../assets/icons/folder.svg");
+    background-position: 0;
+    background-size: contain;
+}
+
+main {
+    width: 100%;
+    height: 90vh;
+    
+    display: grid;
+    grid-template-columns: 1fr 3fr 1fr;
+    grid-template-rows: 3fr 5fr 3fr 1fr;
+    grid-template-areas: 
+                         "nav content users"
+                         "pages content users"
+                         "dms content system"
+                         "storage message system";
+    gap: 0.75rem;
+}
+#nav-panel { grid-area: nav; }
+#pages-panel { grid-area: pages; }
+#dms-panel { grid-area: dms; }
+#storage-panel { grid-area: storage; }
+#content-panel { grid-area: content; }
+#message-panel { grid-area: message; }
+#users-panel { grid-area: users; }
+#system-panel { grid-area: system; }
+
+
+
+/* ---------------------- Specific Panels ---------------------- */
+#nav-panel .pages-selector .page .page-icon { background-image: url("../assets/icons/number.svg"); }
+#pages-panel .pages-selector .page .page-icon { background-image: url("../assets/icons/folder.svg"); }
+#dms-panel .pages-selector .page .page-icon { background-image: url("../assets/icons/user.svg"); }
+#users-panel .pages-selector .page .page-icon { background-image: url("../assets/icons/user.svg"); }
+
+#pages-panel .pages-selector #new-page .page-icon {
+    background-image: url("../assets/icons/add.svg");
+}
+
+#storage-panel {
+    width: 100%;
+
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    flex-direction: row;
+}
+
+#storage-panel .h2-container {
+    width: min-content;
+    height: 100%;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    
+    border: none;
+    border-right: 1px solid var(--accent-light);
+}
+#storage-panel .h2-container h2 { 
+    border: none; 
+    padding: 0;
+    padding-right: 0.5rem;
+}
+#storage-panel p { width: min-content;}
+#storage-panel #storage-bar { 
+    height: 50%; 
+    aspect-ratio: 2 / 1;
+
+    border: 1px solid var(--accent-normal);
+}
+#storage-bar::after {
+    content: "";
+    display: block;
+    
+    height: 100%;
+    width: 32%;
+    
+    position: relative;
+    left: 0;
+    
+    background-color: var(--accent-normal);
+}
+
+#content-panel {
+    display: flex;
+    flex-direction: column;
+}
+
+#content-panel #content-header, #content-panel #content-footer { 
+    width: 100%;
+    
+    padding: 1rem;
+    padding-bottom: 0.5rem;
+
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-direction: row;
+
+    font-size: 1rem;
+    color: var(--text-dim);
+    text-transform: uppercase;
+    font-weight: bold;
+
+
+}
+#content-panel #content-header *, #content-panel #content-footer * {
+    width: 1fr;
+}
+#content-panel #content-header {
+    border-bottom: 1px solid var(--accent-normal);
+}
+#content-panel #content-footer {
+    border-top: 1px solid var(--accent-normal);
+}
+#content-panel #content {
+    flex: 1;
+}
+
+#message-panel { 
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: row;
+    gap: 0.75rem;
+    padding: 0.75rem;
+}
+#message-panel input {
+    height:100%;
+    flex: 1;
+    
+    background-color: var(--bg-light);
+    border: none;
+    border-left: 3px solid var(--accent-light);
+
+    font-family: var(--font-normal);
+    padding: 0.5rem;
+    color: var(--text-normal);
+}
+#message-panel input::placeholder { color: var(--text-dim); }
+#message-panel #send-button {
+    flex: 0 0 auto;
+    height: 100%;
+    aspect-ratio: 1 / 1;
+
+    background-image: url("../assets/icons/send.svg");
+    background-color: transparent;
+    background-position: 0;
+    background-size: contain;
+
+    border: none;
+}
+
+#message-panel #send-button:hover { filter: brightness(75%); }
+#message-panel #send-button:active { filter: brightness(50%); }
+
+#users-panel .pages-selector {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+#users-panel .pages-selector .page { 
+    display: flex;
+    flex-direction: column;
+}
+#users-panel .pages-selector .page .user { display: flex; flex-direction: row; gap: 0.2rem;}
+#users-panel .pages-selector .page .user-last-seen { font-size: 0.75em; color: var(--text-dim); }
+
+#system-panel { 
+    display: flex;
+    justify-content: space-around;
+    align-items:center;
+    flex-direction: column;
+}
+
+
+
+
+#crt-scan-lines {
+    width: 100vw;
+    height: 100vh;
+
+    position: absolute;
+    top: 0;
+    left: 0;
+
+    background:
+        repeating-linear-gradient(
+            to bottom,
+            transparent 0px,
+            transparent 3px,
+            rgba(0, 0, 0, 0.35) 4px,
+            rgba(0, 0, 0, 0.35) 6px
+        );
+    background-attachment: fixed;
+    
+    overflow: hidden;
+    pointer-events: none;
+    z-index: 999;
 }
