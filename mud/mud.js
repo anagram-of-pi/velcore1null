@@ -1,6 +1,6 @@
 /* 
 TODO:
-[ ] Make a placeholder API to call to get the (dummy) information
+[x] Make a placeholder API to call to get the (dummy) information
 [ ] Make it dynamically create the pages and items
 [ ] Make it so that clicking a channel or page or dm updates the current `content type` and `page id`
 [ ] Display the content in the content panel
@@ -8,7 +8,35 @@ TODO:
 [ ] Add error handling to fail cleanly
 */
 
-const { createElement } = require("react");
+
+// ---------------------- Utils ----------------------
+
+function timeAgo(date) {
+    /* AI Generated timeAgo function */
+
+    const seconds = Math.floor((Date.now() - new Date(date).getTime()) / 1000);
+
+    const units = [
+        { name: "year",   seconds: 60 * 60 * 24 * 365 },
+        { name: "month",  seconds: 60 * 60 * 24 * 30 },
+        { name: "week",   seconds: 60 * 60 * 24 * 7 },
+        { name: "day",    seconds: 60 * 60 * 24 },
+        { name: "hour",   seconds: 60 * 60 },
+        { name: "minute", seconds: 60 },
+        { name: "second", seconds: 1 }
+    ];
+
+    for (const unit of units) {
+        const value = Math.floor(seconds / unit.seconds);
+
+        if (value >= 1) {
+            return `${value} ${unit.name}${value !== 1 ? "s" : ""}`;
+        }
+    }
+
+    return "just now";
+}
+
 
 
 // ---------------------- Fullscreen ----------------------
@@ -53,24 +81,24 @@ function requestBasicData() {
     // Overwrite with dummy data
     results = {
         "channels": [
-            { "id": 123, "name": "lobby" },
-            { "id": 456, "name": "general" },
-            { "id": 789, "name": "research" }
+            { "id": 123, "name": "lobby1" },
+            { "id": 456, "name": "general2" },
+            { "id": 789, "name": "research3" }
         ],
         "pages": [
-            { "id": 123, "name": "start_here" },
-            { "id": 456, "name": "the_archive" },
-            { "id": 789, "name": "timeline" }
+            { "id": 123, "name": "start_here4" },
+            { "id": 456, "name": "the_archive5" },
+            { "id": 789, "name": "timeline6" }
         ],
         "dms": [
-            { "username": "username_01", "last_seen": "5/13/26" },
-            { "username": "username_02", "last_seen": "5/14/26" },
-            { "username": "velcore1null", "last_seen": "5/15/26" },
+            { "username": "username_017", "last_seen": "5/13/26" },
+            { "username": "username_028", "last_seen": "5/14/26" },
+            { "username": "velcore1null9", "last_seen": "5/15/26" },
         ],
         "online": [
-            { "username": "username_01", "last_seen": "5/13/26" },
-            { "username": "username_02", "last_seen": "5/14/26" },
-            { "username": "velcore1null", "last_seen": "5/15/26" },
+            { "username": "username_011", "last_seen": "5/13/26" },
+            { "username": "username_022", "last_seen": "5/14/26" },
+            { "username": "velcore1null3", "last_seen": "1/15/26" },
         ]
     };
 
@@ -154,14 +182,17 @@ basicData["channels"].forEach(channel => {
     pageTabContainer.setAttribute("data-channel-id", channel["id"]);
     pageTabContainer.className = "page";
 
-    let icon = document.createElement("div").setAttribute("class", "page-icon");
-    let name = document.createElement("p").setAttribute("class", "page-name");
-    let number = document.createElement("p").setAttribute("class", "page-number");
-    name.textContent = channel["name"];
+    let iconEl = document.createElement("div");
+    iconEl.setAttribute("class", "page-icon");
+    let nameEl = document.createElement("p");
+    nameEl.setAttribute("class", "page-name");
+    nameEl.textContent = channel["name"];
+    let numberEl = document.createElement("p");
+    numberEl.setAttribute("class", "page-number");
 
-    pageTabContainer.append(icon, name, number);
+    pageTabContainer.append(iconEl, nameEl, numberEl);
 
-    channelPages.append(pageTabContainer);
+    channelPages.push(pageTabContainer);
 });
 
 
@@ -172,39 +203,92 @@ basicData["channels"].forEach(note => {
     pageTabContainer.setAttribute("data-channel-id", note["id"]);
     pageTabContainer.className = "page";
 
-    let icon = document.createElement("div").setAttribute("class", "page-icon");
-    let name = document.createElement("p").setAttribute("class", "page-name");
-    let number = document.createElement("p").setAttribute("class", "page-number");
-    name.textContent = note["name"];
+    let iconEl = document.createElement("div");
+    iconEl.setAttribute("class", "page-icon");
+    let nameEl = document.createElement("p");
+    nameEl.setAttribute("class", "page-name");
+    nameEl.textContent = note["name"];
+    let numberEl = document.createElement("p");
+    numberEl.setAttribute("class", "page-number");
 
-    pageTabContainer.append(icon, name, number);
+    pageTabContainer.append(iconEl, nameEl, numberEl);
 
-    notePages.append(pageTabContainer);
+    notePages.push(pageTabContainer);
 });
 
 
 // Create the tabs for the dm pages
 let dmPages = [];
+console.log(basicData["dms"]);
+
 basicData["dms"].forEach(dm => {
     let pageTabContainer = document.createElement("div");
     pageTabContainer.setAttribute("data-dm-id", dm["id"]);
     pageTabContainer.className = "page";
 
-    let icon = document.createElement("div").setAttribute("class", "page-icon");
-    let name = document.createElement("p").setAttribute("class", "page-name");
-    let number = document.createElement("p").setAttribute("class", "page-number");
-    name.textContent = dm["name"];
+    let iconEl = document.createElement("div");
+    iconEl.setAttribute("class", "page-icon");
+    let nameEl = document.createElement("p");
+    nameEl.setAttribute("class", "page-name");
+    nameEl.textContent = dm["username"];
+    let numberEl = document.createElement("p");
+    numberEl.setAttribute("class", "page-number");
 
-    pageTabContainer.append(icon, name, number);
+    pageTabContainer.append(iconEl, nameEl, numberEl);
 
-    dmPages.append(pageTabContainer);
+    dmPages.push(pageTabContainer);
 });
 
-// Remove the placeholder elements (remove placeholders, keeping new page tabs)
 
+// Create the tabs for the online players
+let onlinePages = [];
+basicData["online"].forEach(user => {
+    let pageTabContainer = document.createElement("div");
+    pageTabContainer.setAttribute("data-user-id", user["username"]);
+    pageTabContainer.className = "page";
+
+    let userEl = document.createElement("div");
+    userEl.setAttribute("class", "user");
+    let iconEl = document.createElement("div")
+    iconEl.setAttribute("class", "page-icon");
+    let nameEl = document.createElement("p")
+    let lastSeenEl = document.createElement("p")
+    lastSeenEl.setAttribute("class", "user-last-seen");
+    
+    let lastSeenText = timeAgo(new Date(user["last_seen"]));
+    nameEl.textContent = user["username"];
+    lastSeenEl.textContent = lastSeenText;
+
+    userEl.append(iconEl, nameEl);
+    pageTabContainer.append(userEl, lastSeenEl);
+
+    onlinePages.push(pageTabContainer);
+});
+
+// Remove the placeholder elements (remove placeholders, keep new page tabs)
+let placeholderChannelPages = document.querySelectorAll(".placeholder-page");
+placeholderChannelPages.forEach(element => {
+    element.remove();
+});
 
 // Insert them into DOM
+const navPanel = document.getElementById("nav-panel").querySelector(".pages-selector");
+const pagesPanel = document.getElementById("pages-panel").querySelector(".pages-selector");
+const dmsPanel = document.getElementById("dms-panel").querySelector(".pages-selector");
+const usersPanel = document.getElementById("users-panel").querySelector(".pages-selector");
 
+channelPages.forEach(el => {
+    navPanel.appendChild(el);
+});
+notePages.forEach(el => {
+    pagesPanel.insertBefore(el, pagesPanel.querySelector(".new-page"));
+});
+dmPages.forEach(el => {
+    dmsPanel.insertBefore(el, dmsPanel.querySelector(".new-page"));
+});
+onlinePages.forEach(el => {
+    usersPanel.appendChild(el);
+});
 
 
 

@@ -3,28 +3,28 @@
     font-family: "JetBrains";
     font-style: normal;
     font-weight: 400;
-    src: url("assets/fonts/JetBrainsMono-regular.woff2") format("woff2");
+    src: url("../assets/fonts/JetBrainsMono-regular.woff2") format("woff2");
 }
 @font-face {
     font-display: swap;
     font-family: "JetBrains";
     font-style: normal;
     font-weight: 700;
-    src: url("assets/fonts/JetBrainsMono-bold.woff2") format("woff2");
+    src: url("../assets/fonts/JetBrainsMono-bold.woff2") format("woff2");
 }
 @font-face {
   font-display: swap;
   font-family: "Roboto Condensed";
   font-style: normal;
   font-weight: 400;
-  src: url('assets/fonts/roboto-condensed-regular.woff2') format('woff2');
+  src: url('../assets/fonts/roboto-condensed-regular.woff2') format('woff2');
 }
 @font-face {
   font-display: swap;
   font-family: "Roboto Condensed";
   font-style: normal;
   font-weight: 900;
-  src: url('assets/fonts/roboto-condensed-900.woff2') format('woff2');
+  src: url('../assets/fonts/roboto-condensed-900.woff2') format('woff2');
 }
 
 body, html, * {
