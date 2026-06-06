@@ -1,9 +1,10 @@
 /* 
 TODO:
 [x] Make a placeholder API to call to get the (dummy) information
-[ ] Make it dynamically create the pages and items
-[ ] Make it so that clicking a channel or page or dm updates the current `content type` and `page id`
-[ ] Display the content in the content panel
+[x] Make it dynamically create the pages and items
+[x] Make it so that clicking a channel or page or dm updates the current `content type` and `page id`
+[x] Display the content in the content panel
+[ ] Allow user to type/edit
 [ ] Send data about changes and messages back to API
 [ ] Add error handling to fail cleanly
 */
@@ -46,7 +47,6 @@ function openFullscreen() {
     
     // Check if document can be fullscreened before requesting it
     documentEl.requestFullscreen();
-    console.log("Requested fullscreen");
 }
 
 const fullscreenButtonEl = document.getElementById("fullscreen");
@@ -128,7 +128,7 @@ function requestPageContent(page_id) {
 function requestMessages(page_id) {
     const MessagesPath = "/example_channel/";
 
-    url = apiBaseUrl + pageContentPath;
+    url = apiBaseUrl + MessagesPath;
     args = "";
 
     results = callApi(url, args);
@@ -181,6 +181,7 @@ basicData["channels"].forEach(channel => {
     let pageTabContainer = document.createElement("div");
     pageTabContainer.setAttribute("data-channel-id", channel["id"]);
     pageTabContainer.className = "page";
+    pageTabContainer.onclick = () => updateContentPanel("channel", channel["id"]);
 
     let iconEl = document.createElement("div");
     iconEl.setAttribute("class", "page-icon");
@@ -198,10 +199,11 @@ basicData["channels"].forEach(channel => {
 
 // Create the tabs for the note pages
 let notePages = [];
-basicData["channels"].forEach(note => {
+basicData["pages"].forEach(note => {
     let pageTabContainer = document.createElement("div");
-    pageTabContainer.setAttribute("data-channel-id", note["id"]);
+    pageTabContainer.setAttribute("data-note-id", note["id"]);
     pageTabContainer.className = "page";
+    pageTabContainer.onclick = () => updateContentPanel("page", note["id"]);
 
     let iconEl = document.createElement("div");
     iconEl.setAttribute("class", "page-icon");
@@ -219,12 +221,11 @@ basicData["channels"].forEach(note => {
 
 // Create the tabs for the dm pages
 let dmPages = [];
-console.log(basicData["dms"]);
-
 basicData["dms"].forEach(dm => {
     let pageTabContainer = document.createElement("div");
     pageTabContainer.setAttribute("data-dm-id", dm["id"]);
     pageTabContainer.className = "page";
+    pageTabContainer.onclick = () => updateContentPanel("dm", dm["id"]);
 
     let iconEl = document.createElement("div");
     iconEl.setAttribute("class", "page-icon");
@@ -292,3 +293,104 @@ onlinePages.forEach(el => {
 
 
 
+// ---------------------- Content Panel ----------------------
+let contentCurrentContentType = "page";
+let contentCurrentContentID   = "123";
+
+function updateContentPanel(contentType, contentID) {
+    contentCurrentContentType = contentType;
+    contentCurrentContentID = contentID;
+    
+    results = requestMessages(contentCurrentContentID);
+
+    results = {
+        "id": "123",
+        "name": "start_here!",
+        "creation_date": "Sat Sep 13 275760 00:00:00",
+        "author": "velcore1null",
+        "messages": [
+            {
+                "message_content": "hello world 1",
+                "user_id": 123,
+                "username": "velcore1null",
+                "time": "Sat Sep 13 275760 00:00:00"
+            },
+            {
+                "message_content": "hello world 2",
+                "user_id": 123,
+                "username": "username_017",
+                "time": "Sat Sep 13 275760 00:00:10"
+            },
+            {
+                "message_content": "hello world 3",
+                "user_id": 123,
+                "username": "username_017",
+                "time": "Sat Sep 13 275760 00:00:20"
+            }
+        ]
+    };
+
+    let contentPanelEl = document.getElementById("content-panel");
+    let nameEl = document.getElementById("content-name-field");
+    let dateEl = document.getElementById("content-date-field");
+    let authorEl = document.getElementById("content-author-field");
+    let contentEl = document.getElementById("content");
+
+    nameEl.textContent = results["name"];
+    dateEl.textContent = results["creation_date"];
+    authorEl.textContent = results["author"];
+
+
+    // AI GENERATED START
+    contentEl.innerHTML = "";
+
+    if (contentCurrentContentType === "channel" || contentCurrentContentType === "dm") {
+        // Display messages grouped by sender
+        let currentGroup = null;
+        let currentUsername = null;
+
+        results["messages"].forEach(message => {
+            // Check if we need to start a new group
+            if (message["username"] !== currentUsername) {
+                currentUsername = message["username"];
+                currentGroup = document.createElement("div");
+                currentGroup.className = "message-group";
+                
+                let senderEl = document.createElement("p");
+                senderEl.className = "message-group-sender";
+                
+                // Extract date from the time string (e.g., "Sat Sep 13" from "Sat Sep 13 275760 00:00:00")
+                let timeParts = message["time"].split(" ");
+                let dateStr = timeParts.slice(0, 3).join(" ");
+                
+                senderEl.textContent = `${message["username"]} | ${dateStr}`;
+                
+                currentGroup.appendChild(senderEl);
+                contentEl.appendChild(currentGroup);
+            }
+
+            // Add message to current group
+            let messageEl = document.createElement("div");
+            messageEl.className = "message";
+            
+            let contentMessageEl = document.createElement("p");
+            contentMessageEl.className = "message-content";
+            contentMessageEl.textContent = message["message_content"];
+            
+            let timeEl = document.createElement("p");
+            timeEl.className = "message-time";
+            timeEl.textContent = message["time"];
+            
+            // messageEl.append(contentMessageEl, timeEl);
+            messageEl.append(contentMessageEl);
+            currentGroup.appendChild(messageEl);
+        });
+    } else if (contentCurrentContentType === "page") {
+        // Display page content
+        let pageContentEl = document.createElement("p");
+        pageContentEl.className = "page-content";
+        pageContentEl.textContent = results["content"];
+        contentEl.appendChild(pageContentEl);
+    }
+    // AI GENERATED END
+}
