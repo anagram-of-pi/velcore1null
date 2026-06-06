@@ -4,9 +4,10 @@ TODO:
 [x] Make it dynamically create the pages and items
 [x] Make it so that clicking a channel or page or dm updates the current `content type` and `page id`
 [x] Display the content in the content panel
-[ ] Allow user to type/edit
-[ ] Send data about changes and messages back to API
+[x] Allow user to type/edit
+[x] Send data about changes and messages back to API
 [ ] Add error handling to fail cleanly
+[ ] Make new page work + send API request
 */
 
 
@@ -141,19 +142,186 @@ function requestMessages(page_id) {
         "author": "velcore1null",
         "messages": [
             {
-                "message_content": "hello world",
+                "message_content": "hello world 1",
                 "user_id": 123,
+                "username": "velcore1null",
                 "time": "Sat Sep 13 275760 00:00:00"
             },
             {
                 "message_content": "hello world 2",
                 "user_id": 123,
+                "username": "username07",
                 "time": "Sat Sep 13 275760 00:00:10"
-            }
+            },
+            {
+                "message_content": "hello world 3",
+                "user_id": 123,
+                "username": "username07",
+                "time": "Sat Sep 13 275760 00:00:20"
+            },
+            {
+                "message_content": "hello world",
+                "user_id": 123,
+                "username": "velcore1null",
+                "time": "Sat Sep 13 275760 00:00:30"
+            },
+            {
+                "message_content": "hello world",
+                "user_id": 123,
+                "username": "velcore1null",
+                "time": "Sat Sep 13 275760 00:00:30"
+            },
+            {
+                "message_content": "hello world",
+                "user_id": 123,
+                "username": "velcore1null",
+                "time": "Sat Sep 13 275760 00:00:30"
+            },
+            {
+                "message_content": "hello world",
+                "user_id": 123,
+                "username": "velcore1null",
+                "time": "Sat Sep 13 275760 00:00:30"
+            },
+            {
+                "message_content": "hello world",
+                "user_id": 123,
+                "username": "velcore1null",
+                "time": "Sat Sep 13 275760 00:00:30"
+            },
+            {
+                "message_content": "hello world",
+                "user_id": 123,
+                "username": "velcore1null",
+                "time": "Sat Sep 13 275760 00:00:30"
+            },
+            {
+                "message_content": "hello world",
+                "user_id": 123,
+                "username": "velcore1null",
+                "time": "Sat Sep 13 275760 00:00:30"
+            },
+            {
+                "message_content": "hello world",
+                "user_id": 123,
+                "username": "velcore1null",
+                "time": "Sat Sep 13 275760 00:00:30"
+            },
+            {
+                "message_content": "hello world",
+                "user_id": 123,
+                "username": "velcore1null",
+                "time": "Sat Sep 13 275760 00:00:30"
+            },
+            {
+                "message_content": "hello world",
+                "user_id": 123,
+                "username": "velcore1null",
+                "time": "Sat Sep 13 275760 00:00:30"
+            },
+            {
+                "message_content": "hello world",
+                "user_id": 123,
+                "username": "velcore1null",
+                "time": "Sat Sep 13 275760 00:00:30"
+            },
+            {
+                "message_content": "hello world",
+                "user_id": 123,
+                "username": "velcore1null",
+                "time": "Sat Sep 13 275760 00:00:30"
+            },
+            {
+                "message_content": "hello world",
+                "user_id": 123,
+                "username": "velcore1null",
+                "time": "Sat Sep 13 275760 00:00:30"
+            },
+            {
+                "message_content": "hello world",
+                "user_id": 123,
+                "username": "velcore1null",
+                "time": "Sat Sep 13 275760 00:00:30"
+            },
+            {
+                "message_content": "hello world",
+                "user_id": 123,
+                "username": "velcore1null",
+                "time": "Sat Sep 13 275760 00:00:30"
+            },
+            {
+                "message_content": "hello world",
+                "user_id": 123,
+                "username": "velcore1null",
+                "time": "Sat Sep 13 275760 00:00:30"
+            },
+            {
+                "message_content": "hello world",
+                "user_id": 123,
+                "username": "velcore1null",
+                "time": "Sat Sep 13 275760 00:00:30"
+            },
+            {
+                "message_content": "hello world hello world hello world hello world",
+                "user_id": 123,
+                "username": "velcore1null",
+                "time": "Sat Sep 13 275760 00:00:30"
+            },
+            {
+                "message_content": "hello world",
+                "user_id": 123,
+                "username": "velcore1null",
+                "time": "Sat Sep 13 275760 00:00:30"
+            },
+            {
+                "message_content": "hello world",
+                "user_id": 123,
+                "username": "velcore1null",
+                "time": "Sat Sep 13 275760 00:00:30"
+            },
+            {
+                "message_content": "hello world",
+                "user_id": 123,
+                "username": "velcore1null",
+                "time": "Sat Sep 13 275760 00:00:30"
+            },
+            {
+                "message_content": "hello world",
+                "user_id": 123,
+                "username": "velcore1null",
+                "time": "Sat Sep 13 275760 00:00:30"
+            },
+            {
+                "message_content": "hello world",
+                "user_id": 123,
+                "username": "velcore1null",
+                "time": "Sat Sep 13 275760 00:00:30"
+            },
+            {
+                "message_content": "hello world",
+                "user_id": 123,
+                "username": "velcore1null",
+                "time": "Sat Sep 13 275760 00:00:30"
+            },
+            {
+                "message_content": "hello world",
+                "user_id": 123,
+                "username": "velcore1null",
+                "time": "Sat Sep 13 275760 00:00:30"
+            },
         ]
     };
 
     return results;
+}
+
+function sendMessage(page_id, content) {
+    const MessagesPath = "/example_channel/";
+
+    url = apiBaseUrl + MessagesPath;
+    args = "";
+
+    return 200;
 }
 
 
@@ -303,33 +471,6 @@ function updateContentPanel(contentType, contentID) {
     
     results = requestMessages(contentCurrentContentID);
 
-    results = {
-        "id": "123",
-        "name": "start_here!",
-        "creation_date": "Sat Sep 13 275760 00:00:00",
-        "author": "velcore1null",
-        "messages": [
-            {
-                "message_content": "hello world 1",
-                "user_id": 123,
-                "username": "velcore1null",
-                "time": "Sat Sep 13 275760 00:00:00"
-            },
-            {
-                "message_content": "hello world 2",
-                "user_id": 123,
-                "username": "username_017",
-                "time": "Sat Sep 13 275760 00:00:10"
-            },
-            {
-                "message_content": "hello world 3",
-                "user_id": 123,
-                "username": "username_017",
-                "time": "Sat Sep 13 275760 00:00:20"
-            }
-        ]
-    };
-
     let contentPanelEl = document.getElementById("content-panel");
     let nameEl = document.getElementById("content-name-field");
     let dateEl = document.getElementById("content-date-field");
@@ -394,3 +535,22 @@ function updateContentPanel(contentType, contentID) {
     }
     // AI GENERATED END
 }
+
+// Send message
+const messageFormEl = document.getElementById("message-form");
+messageFormEl.addEventListener("submit", (e) => {
+    e.preventDefault();
+    let messageEl = document.querySelector("#message-form input");
+    let buttonEl = document.getElementById("send-button");
+
+    buttonEl.disabled = true;
+    
+    sendMessage(contentCurrentContentID, messageEl.value);
+    
+    setTimeout(() => {
+        buttonEl.disabled = false;
+        updateContentPanel(contentCurrentContentType, contentCurrentContentID)
+    }, 2500);
+
+    messageEl.value = "";
+});

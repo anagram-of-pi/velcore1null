@@ -109,7 +109,7 @@
             <div id="content-header">
                 <p>Page: <span id="content-name-field">start_here</span></p>
             </div>
-            <div id="content"></div>
+            <div id="content"><textarea name="note-text" id="note-text"></textarea></div>
             <div id="content-footer">
                 <p>Created: <span id="content-date-field">2023-11-07 22:14:03</span></p>
                 <p>Author: <span id="content-author-field">velcore1null</span></p>
@@ -118,8 +118,10 @@
         </div>
 
         <div class="panel" id="message-panel">
-            <input type="text" name="message-box" placeholder="Type a message to the channel...">
-            <button id="send-button"></button>
+            <form id="message-form">
+                <input type="text" name="message-box" placeholder="Type a message to the channel...">
+                <button type="submit" name="message-send" id="send-button"></button>
+            </form>
         </div>
 
         <div class="panel" id="users-panel">

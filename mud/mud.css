@@ -19,6 +19,9 @@ body, html, * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
+
+    scrollbar-color: var(--accent-normal) var(--bg-dark);
+    scrollbar-width: thin;
 }
 
 /* Define variables for consistent and customizable colors and fonts */
@@ -265,43 +268,8 @@ main {
     background-color: var(--accent-normal);
 }
 
-#content-panel {
-    display: flex;
-    flex-direction: column;
-}
-
-#content-panel #content-header, #content-panel #content-footer { 
-    width: 100%;
-    
-    padding: 1rem;
-    padding-bottom: 0.5rem;
-
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    flex-direction: row;
-
-    font-size: 1rem;
-    color: var(--text-dim);
-    text-transform: uppercase;
-    font-weight: bold;
-
-
-}
-#content-panel #content-header *, #content-panel #content-footer * {
-    width: 1fr;
-}
-#content-panel #content-header {
-    border-bottom: 1px solid var(--accent-normal);
-}
-#content-panel #content-footer {
-    border-top: 1px solid var(--accent-normal);
-}
-#content-panel #content {
-    flex: 1;
-}
-
-#message-panel { 
+#message-panel form { 
+    height: 100%;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -309,7 +277,7 @@ main {
     gap: 0.75rem;
     padding: 0.75rem;
 }
-#message-panel input {
+#message-panel form input {
     height:100%;
     flex: 1;
     
@@ -323,8 +291,8 @@ main {
 
     caret-color: var(--accent-light);
 }
-#message-panel input::placeholder { color: var(--text-dim); }
-#message-panel #send-button {
+#message-panel form input::placeholder { color: var(--text-dim); }
+#message-panel form #send-button {
     flex: 0 0 auto;
     height: 100%;
 
@@ -332,8 +300,9 @@ main {
 
     transform: scale(0.8);
 }
-#message-panel #send-button:hover { filter: brightness(75%); }
-#message-panel #send-button:active { filter: brightness(50%); }
+#message-panel form #send-button:hover { filter: brightness(75%); }
+#message-panel form #send-button:active { filter: brightness(50%); }
+#message-panel form #send-button:disabled { opacity: 0.5; cursor: not-allowed; }
 
 /* Remove the blue box that appears when focused */
 :focus-visible {
@@ -363,30 +332,83 @@ main {
 
 
 /* ---------------------- Content Panel/Messages ---------------------- */
+#content-panel {
+    display: flex;
+    flex-direction: column;
+}
+
+#content-panel #content-header, #content-panel #content-footer { 
+    width: 100%;
+    
+    padding: 1rem;
+    padding-bottom: 0.5rem;
+
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-direction: row;
+
+    font-size: 1rem;
+    color: var(--text-dim);
+    text-transform: uppercase;
+    font-weight: bold;
+}
+#content-panel #content-header *, #content-panel #content-footer * {
+    width: 1fr;
+}
+#content-panel #content-header {
+    border-bottom: 1px solid var(--accent-normal);
+}
+#content-panel #content-footer {
+    border-top: 1px solid var(--accent-normal);
+}
+#content-panel #content {
+    flex: 1;
+    overflow-x: hidden;
+    overflow-y: scroll;
+    scrollbar-color: var(--accent-normal) var(--bg-dark);
+    scrollbar-width: thin;
+
+}
+
+#content textarea {
+    width: 100%;
+    height: 100%;
+    
+    background: none;
+    border: none;
+
+    font-family: var(--font-normal);
+    font-size: 1.25rem;
+    padding: 0.75rem;
+    color: var(--text-normal);
+
+    caret-color: var(--accent-light);
+    resize: none;
+}
+
+
 .message-group {
     margin-bottom: 0.75rem;
     padding-left: 0.75rem;
 }
-
 .message-group-sender {
     font-weight: bold;
     font-size: 0.9rem;
     margin-bottom: 0.2rem;
     color: var(--text-dim);
 }
-
 .message {
     padding: 0rem 1.5rem;
 }
-
 .message-content {
     margin: 0.2rem 0;
 }
-
 .message-time {
     font-size: 0.75rem;
     color: var(--text-dim);
 }
+
 
 
 
