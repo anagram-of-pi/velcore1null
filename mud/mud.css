@@ -216,8 +216,8 @@ main {
 #dms-panel .pages-selector .page .page-icon { background-image: url("../assets/icons/user.svg"); }
 #users-panel .pages-selector .page .page-icon { background-image: url("../assets/icons/user.svg"); }
 
-#pages-panel .pages-selector #new-page .page-icon {
-    background-image: url("../assets/icons/add.svg");
+.pages-selector .page.new-page .page-icon {
+    background-image: url("../assets/icons/add.svg") !important;
 }
 
 #storage-panel {
@@ -361,7 +361,12 @@ main {
 
 
 
+/* Choose elements to make non-selectable */
+.page, #user, #message-panel input::placeholder {
+    user-select: none;
+}
 
+/* Position the scan lines over the screen */
 #crt-scan-lines {
     width: 100vw;
     height: 100vh;

@@ -300,9 +300,14 @@ hr::after {
     background-color: var(--accent-dark);
 
     /* white-space: pre-wrap; */
+    font-family: var(--font-title);
     text-align: center;
-    font-family: var(--text-normal);
     font-size: 2rem;
 
     z-index: 50;
+}
+.banner p {
+    font-family: var(--font-title);
+    text-align: center;
+    font-size: 1.35rem;
 }
